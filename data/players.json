@@ -4,5 +4,11 @@
     "name": "Xander",
     "points": 200,
     "completed": ["Grief"]
+  },
+  {
+    "rank": 2,
+    "name": "Krakav",
+    "points": 200,
+    "completed": ["Grief"]
   }
   ]
