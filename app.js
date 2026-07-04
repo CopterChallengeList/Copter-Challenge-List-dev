@@ -152,7 +152,22 @@ function selectLevel(rank) {
         </div>
 
         <h3 style="margin-bottom:15px; font-size:1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom:8px;">Records Verified</h3>
-        <p style="color:var(--text-muted); font-size:0.95rem;">Records matching verification rules will be displayed alongside player profiles here.</p>
+        <div class="records-list" style="display: flex; flex-direction: column; gap: 8px;">
+            ${(() => {
+                const verifiedPlayers = state.players.filter(p => p.completions && p.completions.includes(level.name));
+
+                if (verifiedPlayers.length === 0) {
+                    return `<p style="color:var(--text-muted); font-size:0.95rem;">No verified records for this challenge yet.</p>`;
+                }
+
+                return verifiedPlayers.map(p =>` 
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-card); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--border-color);">
+                        <span style="font-weight: 600;">${p.name}</span>
+                        <span style="color: var(--teal); font-size: 0.9rem;">100% Complete</span>
+                    </div>
+                `).join('');
+            })()}
+        </div>
     `;
 }
 
