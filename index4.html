@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Copter Challenge List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar" id="main-nav">
+        <div class="nav-logo" onclick="window.location.hash = '#home'">THE COPTER LIST</div>
+        <div class="nav-links">
+            <a href="#list" class="nav-item" id="nav-list">Main List</a>
+            <a href="#leaderboard" class="nav-item" id="nav-leaderboard">Leaderboard</a>
+            <a href="#submit" class="nav-item" id="nav-submit">Submit Record</a>
+        </div>
+    </nav>
+
+    <section id="view-home" class="view page-center">
+        <div class="landing-container">
+            <h1 class="glow-text">THE COPTER<br><span class="accent-text">CHALLENGE LIST</span></h1>
+            <p class="subtitle">The definitive ranking of the hardest Geometry Dash copter challenges.</p>
+            <button class="btn-primary" onclick="window.location.hash = '#list'">View the List</button>
+        </div>
+    </section>
+
+    <section id="view-list" class="view container hidden">
+        <div class="list-layout">
+            <div class="list-sidebar" id="levels-container">
+                </div>
+            
+            <div class="list-detail-panel" id="level-detail-panel">
+                <div class="panel-placeholder">
+                    <p>Select a challenge from the list to view video, details, and records.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="view-leaderboard" class="view container hidden">
+        <div class="card">
+            <h2 class="section-title">Player Leaderboard</h2>
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Completed Challenges</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-container">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="view-submit" class="view container hidden">
+        <div class="card max-w-md">
+            <h2 class="section-title">Submit a Record</h2>
+            <p style="color: #aaa; margin-bottom: 20px; font-size: 0.9rem;"> Ensure you have video proof with clicks audible before submitting.</p>
+            <form id="submission-form" onsubmit="event.preventDefault(); alert('Submission simulated! In production, route this data to a Webhook or Google Form.');">
+                <div class="form-group">
+                    <label for="player-name">Player Name</label>
+                    <input type="text" id="player-name" required placeholder="Your GD username">
+                </div>
+                <div class="form-group">
+                    <label for="level-name">Challenge Name</label>
+                    <input type="text" id="level-name" required placeholder="e.g., Hellfire Copter">
+                </div>
+                <div class="form-group">
+                    <label for="video-link">Video Proof Link</label>
+                    <input type="url" id="video-link" required placeholder="https://www.youtube.com/watch?v=...">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Submit for Review</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>

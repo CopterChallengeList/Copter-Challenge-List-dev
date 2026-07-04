@@ -1,0 +1,14 @@
+[
+  {
+    "rank": 1,
+    "name": "PlayerOne",
+    "points": 1250.5,
+    "completed": ["Hellfire Copter", "Quantum Glide"]
+  },
+  {
+    "rank": 2,
+    "name": "DashMaster",
+    "points": 800.0,
+    "completed": ["Quantum Glide"]
+  }
+]
