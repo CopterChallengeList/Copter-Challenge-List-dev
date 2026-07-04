@@ -62,26 +62,19 @@
     </section>
 
     <section id="view-submit" class="view container hidden">
-        <div class="card max-w-md">
-            <h2 class="section-title">Submit a Record</h2>
-            <p style="color: #aaa; margin-bottom: 20px; font-size: 0.9rem;"> Ensure you have video proof with clicks audible before submitting.</p>
-            <form id="submission-form" onsubmit="event.preventDefault(); alert('Submission simulated! In production, route this data to a Webhook or Google Form.');">
-                <div class="form-group">
-                    <label for="player-name">Player Name</label>
-                    <input type="text" id="player-name" required placeholder="Your GD username">
-                </div>
-                <div class="form-group">
-                    <label for="level-name">Challenge Name</label>
-                    <input type="text" id="level-name" required placeholder="e.g., Hellfire Copter">
-                </div>
-                <div class="form-group">
-                    <label for="video-link">Video Proof Link</label>
-                    <input type="url" id="video-link" required placeholder="https://www.youtube.com/watch?v=...">
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Submit for Review</button>
-            </form>
-        </div>
-    </section>
+    <div class="card max-w-md">
+        <h2 class="section-title">Submit a Record</h2>
+        <p style="color: #aaa; margin-bottom: 20px; font-size: 0.9rem;">Ensure you have video proof with clicks audible before submitting.</p>
+
+        <!-- THE NEW LINK BUTTON -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0yJ1CSbgXF95pNdj706lMqWDLv0QqaqrTU9pVQqVFEP4DYg/viewform?usp=dialog" 
+           target="_blank" 
+           class="btn btn-primary" 
+           style="display: block; text-align: center; text-decoration: none; width: 100%; margin-top: 10px;">
+           Open Submission Form
+        </a>
+    </div>
+</section>
 
     <script src="app.js"></script>
 </body>
