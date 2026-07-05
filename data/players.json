@@ -3,12 +3,28 @@
     "rank": 1,
     "name": "Xander",
     "points": 200,
-    "completed": ["Grief"]
+    "completed": ["Grief"],
+    "proofVideo": "https://youtu.be/XbnHVEjIebk"
   },
   {
     "rank": 2,
     "name": "Krakav",
     "points": 200,
-    "completed": ["Grief"]
+    "completed": ["Grief"],
+    "proofVideo": "https://youtu.be/gVWOcI3wMYo"
+  },
+  {
+    "rank": 3,
+    "name": "Aspectt",
+    "points": 200,
+    "completed": ["Grief"],
+    "proofVideo": "https://youtu.be/3WfXq-fhYQk?si=753LFDepe-6PCiq5"
+  },
+  {
+    "rank": 4,
+    "name": "LordOfFIH",
+    "points": 200,
+    "completed": ["Grief"],
+    "proofVideo": "https://youtu.be/3WfXq-fhYQk?si=753LFDepe-6PCiq5"
   }
   ]
