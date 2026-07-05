@@ -143,11 +143,11 @@ function selectLevel(rank) {
             <h2 class="detail-title"><span class="level-rank">#${level.rank}</span> ${level.name}</h2>
             
             <div class="level-id" 
-     onclick="navigator.clipboard.writeText('${level.id || ''}'); alert('Level ID Copied to Clipboard!');" 
-     style="font-size: 0.95rem; color: var(--text-muted); margin-top: -4px; margin-bottom: 8px; font-family: monospace; cursor: pointer; display: inline-block;" 
-     title="Click to copy ID">
-    ID: ${level.id || 'Unassigned'} 📋
-</div>
+                 onclick="navigator.clipboard.writeText('${level.id || ''}'); alert('Level ID Copied to Clipboard!');" 
+                 style="font-size: 0.95rem; color: var(--text-muted); margin-top: -4px; margin-bottom: 8px; font-family: monospace; cursor: pointer; display: inline-block;" 
+                 title="Click to copy ID">
+                ID: ${level.id || 'Unassigned'} 📋
+            </div>
 
             <p class="level-creator" style="font-size:1rem; margin-top: 4px;">Published by <strong>${level.author}</strong></p>
             <span class="badge ${modeClassMap[level.mode] || 'badge-ship'}" style="display:inline-block; margin-top:10px;">${level.mode}</span>
@@ -168,20 +168,22 @@ function selectLevel(rank) {
                     return `<p style="color:var(--text-muted); font-size:0.95rem;">No verified records for this challenge yet.</p>`;
                 }
                 
-                return verifiedPlayers.map(p => `
-    <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-card); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--border-color);">
-        <span style="font-weight: 600;">${p.name}</span>
-        <a href="${p.proofVideo || level.video}" target="_blank" style="color: var(--teal); font-size: 0.9rem; text-decoration: none; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
-            100% Complete 🔗
-        </a>
-    </div>
-`).join('');
+                // FIXED LINK TRACKING LOGIC HERE
+                return verifiedPlayers.map(p => {
+                    const recordLink = p.proofVideo || p.proof || level.video || '#';
+                    return `
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-card); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--border-color);">
+                            <span style="font-weight: 600;">${p.name}</span>
+                            <a href="${recordLink}" target="_blank" style="color: var(--teal); font-size: 0.9rem; text-decoration: none; font-weight: 600;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+                                100% Complete 🔗
+                            </a>
+                        </div>
+                    `;
+                }).join('');
             })()}
         </div>
     `;
 }
-
-
 
 // Populate Leaderboards Data Board
 function renderLeaderboard() {
@@ -207,13 +209,14 @@ function renderLeaderboard() {
     });
 }
 
+// Clean, Case-Insensitive Filtering Engine (No Console Logs Spammer)
 function filterMode(mode) {
     const buttons = document.querySelectorAll('.filter-bar button');
     
-    // 1. Highlight the clicked button
+    // 1. Update button styling states safely
     buttons.forEach(btn => {
         const onClickAttr = btn.getAttribute('onclick') || '';
-        if (onClickAttr.includes(`'${mode}'`)) {
+        if (onClickAttr.toLowerCase().includes(mode.toLowerCase())) {
             btn.style.background = 'var(--teal)';
             btn.style.color = '#000';
             btn.style.border = 'none';
@@ -224,38 +227,24 @@ function filterMode(mode) {
         }
     });
 
-    // 2. Grab all children inside your levels container directly
+    // 2. Filter list layout elements directly
     const container = document.getElementById('levels-container');
-    if (!container) {
-        console.error("Could not find element with id 'levels-container'");
-        return;
-    }
+    if (!container) return;
     
-    // This grabs EVERY level element inside the sidebar, no matter what class name it uses
     const levelCards = container.children;
-    console.log(`Found ${levelCards.length} total cards inside #levels-container.`);
 
     for (let card of levelCards) {
-        // Find any badge element or span inside the card
         const badge = card.querySelector('.badge') || card.querySelector('span');
         
         if (!badge) {
-            // Diagnostic fallback: if no badge is found, just keep the card visible
             card.style.display = 'block';
             continue;
         }
         
         const cardMode = badge.textContent.trim().toLowerCase();
         const searchMode = mode.toLowerCase();
-        
-        console.log(`Checking card... Level Mode text is: "${cardMode}". Searching for: "${searchMode}"`);
 
-        // Flexible matching
-        if (
-            searchMode === 'all' || 
-            cardMode.includes(searchMode) || 
-            searchMode.includes(cardMode)
-        ) {
+        if (searchMode === 'all' || cardMode.includes(searchMode) || searchMode.includes(cardMode)) {
             card.style.display = 'block';
         } else {
             card.style.display = 'none';
