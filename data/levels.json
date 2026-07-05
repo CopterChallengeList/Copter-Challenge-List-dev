@@ -1,6 +1,15 @@
 [
   {
     "rank": 1,
+    "name": "Tarnish",
+    "author": "Celestegd",
+    "mode": "Shipcopter",
+    "id": "144238279",
+    "video": "https://youtu.be/jiWMCZvPlqE",
+    "description": "Tarnish your skill. Let out your rust."
+  },
+  {
+    "rank": 2,
     "name": "Grief",
     "author": "Xander",
     "mode": "Swingcopter",

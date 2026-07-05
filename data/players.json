@@ -1,29 +1,36 @@
 [
   {
     "rank": 1,
+    "name": "Celestegd",
+    "points": 100,
+    "completed": ["Tarnish"],
+    "proofVideo": "https://youtu.be/jiWMCZvPlqE?si=Bzm7gFg4cFEzxY6w"
+  },
+  {
+    "rank": 2,
     "name": "Xander",
-    "points": 200,
+    "points": 100,
     "completed": ["Grief"],
     "proofVideo": "https://youtu.be/ufsX1ucew_k"
   },
   {
-    "rank": 2,
+    "rank": 3,
     "name": "Krakav",
-    "points": 200,
+    "points": 100,
     "completed": ["Grief"],
     "proofVideo": "https://youtu.be/gVWOcI3wMYo"
   },
   {
-    "rank": 3,
+    "rank": 4,
     "name": "Aspectt",
-    "points": 200,
+    "points": 100,
     "completed": ["Grief"],
     "proofVideo": "https://youtu.be/3WfXq-fhYQk?si=753LFDepe-6PCiq5"
   },
   {
-    "rank": 4,
+    "rank": 5,
     "name": "LordOfFIH",
-    "points": 200,
+    "points": 100,
     "completed": ["Grief"],
     "proofVideo": "https://youtu.be/3WfXq-fhYQk?si=753LFDepe-6PCiq5"
   }
