@@ -210,9 +210,10 @@ function renderLeaderboard() {
 function filterMode(mode) {
     const buttons = document.querySelectorAll('.filter-bar button');
     
-    // 1. Update active button visual styles
+    // 1. Update active button visual styles using the attribute string match
     buttons.forEach(btn => {
-        if (btn.textContent.trim() === mode || (mode === 'All' && btn.textContent.trim() === 'All')) {
+        const onClickAttr = btn.getAttribute('onclick') || '';
+        if (onClickAttr.includes(`'${mode}'`)) {
             btn.style.background = 'var(--teal)';
             btn.style.color = '#000';
             btn.style.border = 'none';
@@ -227,11 +228,15 @@ function filterMode(mode) {
     const levelCards = document.querySelectorAll('#levels-container .level-card');
     
     levelCards.forEach(card => {
-        // Looks for the mode badge text inside each card to match it up
+        // Find the mode badge element inside the card
         const modeBadge = card.querySelector('.badge');
-        const cardMode = modeBadge ? modeBadge.textContent.trim() : '';
+        if (!modeBadge) return;
+        
+        const cardMode = modeBadge.textContent.trim().toLowerCase();
+        const searchMode = mode.toLowerCase();
 
-        if (mode === 'All' || cardMode === mode) {
+        // Use partial matching (so 'swing' matches 'swingcopter' and 'ufo' matches 'ufocopter')
+        if (searchMode === 'all' || cardMode.includes(searchMode) || searchMode.includes(cardMode)) {
             card.style.display = 'block';
         } else {
             card.style.display = 'none';
