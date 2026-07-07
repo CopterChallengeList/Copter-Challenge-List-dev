@@ -27,7 +27,7 @@ function calculateLevelPoints(rank) {
     return Number(points.toFixed(2));
 }
 
-// CODE BUNCH 2: Dynamically calculate a player's total points based on their completions
+// Dynamically calculate a player's total points based on their completions
 function getPlayerTotalPoints(player) {
     if (!player.completed || !Array.isArray(player.completed)) return 0;
     
@@ -147,14 +147,17 @@ function renderListSidebar() {
     }
 
     state.levels.forEach(level => {
-        const badgeClass = modeClassMap[level.mode] || 'badge-ship';
-        const levelItem = document.createElement('div');
-        levelItem.className = `level-item ${state.activeLevelId === level.rank ? 'active' : ''}`;
-        levelItem.id = `level-item-${level.rank}`;
-        levelItem.onclick = () => selectLevel(level.rank);
+        // Safe, Case-Insensitive Mode Badge Lookup to prevent pipeline crashes
+        const matchedKey = Object.keys(modeClassMap).find(key => key.toLowerCase() === (level.mode || '').toLowerCase());
+        const badgeClass = matchedKey ? modeClassMap[matchedKey] : 'badge-ship';
 
         // Dynamically grab point values to show next to the challenge name
         const pointsForThisLevel = calculateLevelPoints(level.rank);
+
+        levelItem = document.createElement('div');
+        levelItem.className = `level-item ${state.activeLevelId === level.rank ? 'active' : ''}`;
+        levelItem.id = `level-item-${level.rank}`;
+        levelItem.onclick = () => selectLevel(level.rank);
 
         levelItem.innerHTML = `
             <div class="level-info-meta">
@@ -197,6 +200,10 @@ function selectLevel(rank) {
         `;
     }
 
+    // Safe, Case-Insensitive Mode Badge Lookup for detail panel header
+    const matchedKey = Object.keys(modeClassMap).find(key => key.toLowerCase() === (level.mode || '').toLowerCase());
+    const badgeClass = matchedKey ? modeClassMap[matchedKey] : 'badge-ship';
+
     detailPanel.innerHTML = `
         <div class="detail-header">
             <h2 class="detail-title"><span class="level-rank">#${level.rank}</span> ${level.name}</h2>
@@ -209,7 +216,7 @@ function selectLevel(rank) {
             </div>
 
             <p class="level-creator" style="font-size:1rem; margin-top: 4px;">Published by <strong>${level.author}</strong></p>
-            <span class="badge ${modeClassMap[level.mode] || 'badge-ship'}" style="display:inline-block; margin-top:10px;">${level.mode}</span>
+            <span class="badge ${badgeClass}" style="display:inline-block; margin-top:10px;">${level.mode}</span>
         </div>
 
         ${videoHTML}
@@ -255,7 +262,7 @@ function selectLevel(rank) {
     `;
 }
 
-// CODE BUNCH 3: Populate Leaderboards Data Board Automatically with Formula Sorting
+// Populate Leaderboards Data Board Automatically with Formula Sorting & Alphabetical Tie-Breaker
 function renderLeaderboard() {
     const container = document.getElementById('leaderboard-container');
     container.innerHTML = '';
@@ -271,7 +278,14 @@ function renderLeaderboard() {
             ...player,
             livePoints: getPlayerTotalPoints(player)
         };
-    }).sort((a, b) => b.livePoints - a.livePoints);
+    }).sort((a, b) => {
+        // 1. Sort by points (highest first)
+        if (b.livePoints !== a.livePoints) {
+            return b.livePoints - a.livePoints;
+        }
+        // 2. Tie-breaker: Alphabetical order (A-Z)
+        return a.name.localeCompare(b.name);
+    });
 
     sortedPlayers.forEach((player, index) => {
         const levelNamesList = player.completed && Array.isArray(player.completed) 
