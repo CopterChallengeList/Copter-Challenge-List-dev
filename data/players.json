@@ -1,5 +1,4 @@
 [
-  
   {
     "name": "Aspectt",
     "completed": [
@@ -39,16 +38,17 @@
       { "levelName": "Grief", "video": "https://www.youtube.com/watch?v=gVWOcI3wMYo" }
     ]
   },
-  
   {
     "name": "LordOfFIH",
     "completed": [
       { "levelName": "Grief", "video": "https://youtu.be/TX0YkJI5Jok" }
     ]
   },
-   "name": "femboyCheese",
+  {
+    "name": "femboyCheese",
     "completed": [
       { "levelName": "Midnight", "video": "https://youtu.be/MT2ed9U8ZoQ?si=g_HQ__pRWZon8_fW" }
     ]
   }
+]
 ]
