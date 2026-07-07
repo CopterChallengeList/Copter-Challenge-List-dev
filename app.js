@@ -17,6 +17,32 @@ const modeClassMap = {
     "Varied": "badge-varied"
 };
 
+// Calculate points dynamically based on level placement (rank)
+function calculateLevelPoints(rank) {
+    const x = Number(rank);
+    if (isNaN(x) || x <= 0) return 0;
+    
+    // S = 150 * (1/3)^((x-1)/25) + 50
+    const points = 150 * Math.pow((1 / 3), ((x - 1) / 25)) + 50;
+    return Number(points.toFixed(2));
+}
+
+// CODE BUNCH 2: Dynamically calculate a player's total points based on their completions
+function getPlayerTotalPoints(player) {
+    if (!player.completed || !Array.isArray(player.completed)) return 0;
+    
+    let total = 0;
+    player.completed.forEach(completion => {
+        // Find the level in your global state to check its current rank/placement
+        const globalLevel = state.levels.find(l => l.name === completion.levelName);
+        if (globalLevel) {
+            total += calculateLevelPoints(globalLevel.rank);
+        }
+    });
+    
+    return Number(total.toFixed(2));
+}
+
 // Helper Function to Extract YouTube ID and Convert to Borderless Embed Link
 function getEmbedUrl(url) {
     if (!url) return '';
@@ -127,11 +153,14 @@ function renderListSidebar() {
         levelItem.id = `level-item-${level.rank}`;
         levelItem.onclick = () => selectLevel(level.rank);
 
+        // Dynamically grab point values to show next to the challenge name
+        const pointsForThisLevel = calculateLevelPoints(level.rank);
+
         levelItem.innerHTML = `
             <div class="level-info-meta">
                 <div class="level-title-row">
                     <span class="level-rank">#${level.rank}</span>
-                    <span>${level.name}</span>
+                    <span>${level.name} (${pointsForThisLevel.toFixed(1)} pts)</span>
                 </div>
                 <div class="level-creator">by ${level.author}</div>
             </div>
@@ -226,7 +255,7 @@ function selectLevel(rank) {
     `;
 }
 
-// Populate Leaderboards Data Board
+// CODE BUNCH 3: Populate Leaderboards Data Board Automatically with Formula Sorting
 function renderLeaderboard() {
     const container = document.getElementById('leaderboard-container');
     container.innerHTML = '';
@@ -236,20 +265,27 @@ function renderLeaderboard() {
         return;
     }
 
-    state.players.forEach(player => {
-        // Unpack object elements to pull just the level strings for the UI display row
+    // Map players to include their live calculated scores, then sort highest to lowest
+    const sortedPlayers = state.players.map(player => {
+        return {
+            ...player,
+            livePoints: getPlayerTotalPoints(player)
+        };
+    }).sort((a, b) => b.livePoints - a.livePoints);
+
+    sortedPlayers.forEach((player, index) => {
         const levelNamesList = player.completed && Array.isArray(player.completed) 
             ? player.completed.map(c => c.levelName).join(', ') 
             : 'No completions';
 
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td style="font-weight: 800; color: var(--teal);">#${player.rank}</td>
+            <td style="font-weight: 800; color: var(--teal);">#${index + 1}</td>
             <td style="font-weight: 600;">${player.name}</td>
             <td style="max-width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${levelNamesList}">
                 ${levelNamesList}
             </td>
-            <td style="font-weight: 800; color: var(--teal);">${player.points.toFixed(1)}</td>
+            <td style="font-weight: 800; color: var(--teal);">${player.livePoints.toFixed(2)}</td>
         `;
         container.appendChild(row);
     });

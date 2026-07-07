@@ -2,7 +2,6 @@
   {
     "rank": 1,
     "name": "Celestegd",
-    "points": 300,
     "completed": [
       { "levelName": "Tarnish", "video": "https://youtu.be/jiWMCZvPlqE" },
       { "levelName": "Grief", "video": "https://youtu.be/bWQUlgja4UM" }
@@ -11,7 +10,6 @@
   {
     "rank": 2,
     "name": "Aspectt",
-    "points": 300,
     "completed": [
       { "levelName": "Tarnish", "video": "https://youtu.be/a7IwDLtloCs?si=W-KMw8_ybr3thTBr" },
       { "levelName": "Grief", "video": "https://www.youtube.com/watch?v=3WfXq-fhYQk" }
@@ -20,7 +18,6 @@
   {
     "rank": 3,
     "name": "Xander",
-    "points": 100,
     "completed": [
       { "levelName": "Grief", "video": "https://youtu.be/ufsX1ucew_k?si=Y0wAz2o6NBvIYGC9" }
     ]
@@ -28,7 +25,6 @@
   {
     "rank": 4,
     "name": "Krakav",
-    "points": 100,
     "completed": [
       { "levelName": "Grief", "video": "https://www.youtube.com/watch?v=gVWOcI3wMYo" }
     ]
@@ -37,7 +33,6 @@
   {
     "rank": 5,
     "name": "LordOfFIH",
-    "points": 100,
     "completed": [
       { "levelName": "Grief", "video": "https://youtu.be/TX0YkJI5Jok" }
     ]
