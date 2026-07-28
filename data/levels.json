@@ -1,16 +1,6 @@
 [
-  {
+   {
     "rank": 1,
-    "name": "Ride",
-    "author": "Taublix",
-    "mode": "RobTop Swing",
-    "id": "144876662",
-    "video": "https://www.youtube.com/watch?v=xkckCOgGWVY",
-    "description": "Swing gamemode is cool",
-    "rating": "Featured"
-  },
-  {
-    "rank": 2,
     "name": "Snow Speed",
     "author": "ZAV3L",
     "mode": "RobTop Swing",
@@ -20,7 +10,27 @@
     "rating": "Featured"
   },
   {
+    "rank": 2,
+    "name": "Ride",
+    "author": "Taublix",
+    "mode": "RobTop Swing",
+    "id": "144876662",
+    "video": "https://www.youtube.com/watch?v=xkckCOgGWVY",
+    "description": "Swing gamemode is cool",
+    "rating": "Featured"
+  },
+  {
     "rank": 3,
+    "name": "3Ss in Hell",
+    "author": "TatoSyn",
+    "mode": "Robtop Swing",
+    "id": "145741029",
+    "video": "https://youtu.be/B-PfGMpjarA",
+    "description": "Verified By TatoSyn, Easy top 2 fr",
+    "rating": "Featured"
+  },
+  {
+    "rank": 4,
     "name": "Frozen swing",
     "author": "aspectt",
     "mode": "Swingcopter",
@@ -30,7 +40,7 @@
     "rating": "Featured"
   },
   {
-    "rank": 4,
+    "rank": 5,
     "name": "Funky ehh",
     "author": "slim shady",
     "mode": "Cubecopter",
@@ -40,7 +50,7 @@
     "rating": "Rated"
   },
   {
-    "rank": 5,
+    "rank": 6,
     "name": "Tarnish",
     "author": "Celestegd",
     "mode": "Shipcopter",
@@ -50,7 +60,7 @@
     "rating": "Rated"
   },
   {
-    "rank": 6,
+    "rank": 7,
     "name": "Inexplicable",
     "author": "TatoSyn",
     "mode": "Varied",
@@ -60,7 +70,7 @@
     "rating": "Rated"
   },
   {
-    "rank": 7,
+    "rank": 8,
     "name": "Small Symphony",
     "author": "VPrex",
     "mode": "Varied",
@@ -70,7 +80,7 @@
     "rating": "Featured"
   },
   {
-    "rank": 8,
+    "rank": 9,
     "name": "Grief",
     "author": "Xander",
     "mode": "Swingcopter",
@@ -80,7 +90,7 @@
     "rating": "Rated"
   },
   {
-    "rank": 9,
+    "rank": 10,
     "name": "Midnight",
     "author": "femboyCheese",
     "mode": "Ufocopter",
