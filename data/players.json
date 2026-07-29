@@ -32,8 +32,10 @@
   {
     "name": "fish",
     "completed": [
-      { "levelName": "Grief", "video": "https://youtu.be/A-sWbHwTCok" },
-      { "levelName": "Midnight", "video": "https://youtu.be/z1qyi5Ibyhs" }
+      { "levelName": "Grief", "video": "https://youtu.be/z1qyi5Ibyhs" },
+      { "levelName": "Funky ehh", "video": "https://youtu.be/A-sWbHwTCok" },
+      { "levelName": "Inexplicable", "video": "https://youtu.be/MP_e6pcA_rc" },
+      { "levelName": "Midnight", "video": "https://youtu.be/OG3CKwLc08k" }
     ]
   },
   {
