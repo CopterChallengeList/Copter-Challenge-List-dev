@@ -16,7 +16,18 @@
       { "levelName": "3Ss in Hell", "video": "https://youtu.be/jwl6fvxCw7w" },
       { "levelName": "Midnight", "video": "https://youtu.be/JrPfshEltow" },
       { "levelName": "Small Symphony", "video": "https://youtu.be/N-YrBcWCb1g" },
-      { "levelName": "Funky ehh", "video": "https://youtu.be/p6Lvhra6cGQ" }
+      { "levelName": "Funky ehh", "video": "https://youtu.be/p6Lvhra6cGQ" },
+      { "levelName": "Encore", "video": "https://www.youtube.com/watch?v=V_E8B8KXCbQ" }
+    ]
+  },
+  {
+    "name": "Paradox",
+    "completed": [
+      { "levelName": "Grief", "video": "https://youtu.be/amhPPjBnGoU" },
+      { "levelName": "Inexplicable", "video": "https://youtu.be/amhPPjBnGoU" },
+      { "levelName": "Frozen swing", "video": "https://youtu.be/amhPPjBnGoU" },
+      { "levelName": "Midnight", "video": "https://youtu.be/amhPPjBnGoU" },
+      { "levelName": "Small Symphony", "video": "https://youtu.be/amhPPjBnGoU" }
     ]
   },
   {
@@ -76,7 +87,9 @@
   {
     "name": "Krakav",
     "completed": [
-      { "levelName": "Grief", "video": "https://www.youtube.com/watch?v=gVWOcI3wMYo" }
+      { "levelName": "Grief", "video": "https://www.youtube.com/watch?v=gVWOcI3wMYo" },
+      { "levelName": "Funky ehh", "video": "https://youtu.be/njkVzyawxhE" },
+      { "levelName": "Midnight", "video": "https://youtu.be/jEisLfJskNm" }
     ]
   },
   {
@@ -84,7 +97,8 @@
     "completed": [
       { "levelName": "3Ss in Hell", "video": "https://youtu.be/cyJKgGQDAyU" },
       { "levelName": "Midnight", "video": "https://youtu.be/oFw_-9vV_P4" },
-      { "levelName": "Grief", "video": "https://youtu.be/PJJseeH7_2M" }
+      { "levelName": "Grief", "video": "https://youtu.be/PJJseeH7_2M" },
+      { "levelName": "Moment with you", "video": "https://www.youtube.com/watch?v=7njYOZosenk" }
     ]
   },
   {
